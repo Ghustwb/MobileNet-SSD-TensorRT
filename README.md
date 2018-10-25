@@ -26,4 +26,7 @@ If you coding with QtCreator,you could run it directly
 **TODO:**
 
 ~~1.serializing model will cost a lot of time, if could save the result of serializing model to disk, it will be more convenient~~
+
 2.I think the cost of inference is not good,I want to change the architecture.If I succeeded,I will push it
+
+3.I found that same code get different result in gtx1080 and tx2. WHY?????
