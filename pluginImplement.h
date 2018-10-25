@@ -145,7 +145,9 @@ public:
         assert(nbInputDims == 1);
         assert(index == 0);
         assert(inputs[index].nbDims == 3);
-//        assert((inputs[0].d[0])*(inputs[0].d[1]) % OutC == 0);
+
+        //确保输入的两个维度的积能被 类别数 整除  assert((inputs[0].d[0])*(inputs[0].d[1]) % OutC == 0);
+        assert((inputs[0].d[0])*(inputs[0].d[1]) % 5 == 0);
 
         // @TODO: Understood this.
         return DimsCHW( inputs[0].d[0] , inputs[0].d[1] , inputs[0].d[2] );

@@ -47,10 +47,16 @@ struct Profiler : public IProfiler
 class TensorNet
 {
 public:
-    void caffeToTRTModel(const std::string& deployFile,
-                         const std::string& modelFile,
+    bool caffeToTRTModel(const char* deployFile,
+                         const char* modelFile,
                          const std::vector<std::string>& outputs,
-                         unsigned int maxBatchSize);
+                         unsigned int maxBatchSize,
+                         std::ostream& gieModelStream);
+    bool LoadNetwork( const char* prototxt_path,
+                      const char* model_path,
+                      const char* input_blob,
+                      const std::vector<std::string>& output_blobs,
+                      uint32_t maxBatchSize );
     void createInference();
 
     void imageInference(void** buffers, int nbBuffer, int batchSize);

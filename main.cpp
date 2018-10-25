@@ -110,8 +110,8 @@ void displayBbox(cv::Mat image,std::vector<std::vector<float> > result,double ms
         cv::putText(image,qClassIndex.toStdString(),cv::Point(x1,y2),1,2,cv::Scalar(255,0,0),2);
         cv::putText(image,"FPS:" + qFPS.toStdString(),cv::Point(20,20),1,2,cv::Scalar(0,0,255),2);
     }
-    cv::imshow("Resnet-SSD",image);
-    cv::waitKey(40);
+    cv::imshow("MobileNet-SSD",image);
+    cv::waitKey(0);
 }
 
 void loadImg( cv::Mat &input, int re_width, int re_height, float *data_unifrom,const float3 mean,const float scale )
@@ -149,8 +149,9 @@ int main(int argc, char *argv[])
 {
     std::vector<std::string> output_vector = {OUTPUT_BLOB_NAME};
     TensorNet tensorNet;
-    tensorNet.caffeToTRTModel( model, weight, std::vector<std::string>{ output_vector }, BATCH_SIZE);
-    tensorNet.createInference();
+    tensorNet.LoadNetwork(model,weight,INPUT_BLOB_NAME, output_vector,BATCH_SIZE);
+    //tensorNet.caffeToTRTModel( model, weight, std::vector<std::string>{ output_vector }, BATCH_SIZE);
+    //tensorNet.createInference();
 
     DimsCHW dimsData = tensorNet.getTensorDims(INPUT_BLOB_NAME);
     DimsCHW dimsOut  = tensorNet.getTensorDims(OUTPUT_BLOB_NAME);
