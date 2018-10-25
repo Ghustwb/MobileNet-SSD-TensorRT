@@ -35,9 +35,9 @@ If you coding with QtCreator,you could run it directly
 
 ---
 
-There is a problem，the code runs on different platforms, get different result.
+**There is a problem，the code runs on different platforms, get different result.**
 
-For example, there are 4 pictures, detected result.
+**For example, there are 4 pictures, detected result.**
 
 **The first ，GTX1080_mobileNetSSD_Caffe**
 
@@ -51,7 +51,7 @@ For example, there are 4 pictures, detected result.
 
 ![image](https://github.com/Ghustwb/MobileNet-SSD-TensorRT/blob/master/testPic/TX2_mobileNetSSD_Caffe.jpg)
 
-**The third,TX2_mobileNetSSD_TensorRT3.0.4**
+**The last,TX2_mobileNetSSD_TensorRT3.0.4**
 
 ![image](https://github.com/Ghustwb/MobileNet-SSD-TensorRT/blob/master/testPic/TX2_mobileNetSSD_TensorRT3.0.4_Jetpack3.2.jpg)
 
