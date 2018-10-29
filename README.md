@@ -38,7 +38,3 @@ I retrianed mobileNet-SSD,my number of classfication is 5
 ~~4.There is a problem，the code runs on different platforms, get different result.~~
 
 **All the problems mentioned above have been solved**
-
-**There are bugs in many related code on github**
-
-**If you want to implement tensorRT-mobileNet, it is enough to refer to me.**
