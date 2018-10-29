@@ -23,7 +23,7 @@
 #include "loadImage.h"
 #include "../util/cuda/cudaMappedMemory.h"
 
-#include <QImage>
+//#include <QImage>
 #include <opencv2/core/mat.hpp>
 
 
@@ -85,6 +85,7 @@
 //
 //
 
+/*
 // loadImageRGB
 bool loadImageRGB( const char* filename, float3** cpu, float3** gpu, int* width, int* height, const float3& mean )
 {
@@ -143,6 +144,8 @@ bool loadImageRGB( const char* filename, float3** cpu, float3** gpu, int* width,
     *height = imgHeight;
     return true;
 }
+*/
+
 
 bool    loadImageBGR( cv::Mat frame, float3** cpu, float3** gpu, int* width, int* height, const float3& mean )
 {

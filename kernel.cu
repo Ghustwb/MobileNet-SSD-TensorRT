@@ -65,9 +65,9 @@ __global__ void gpuPreImageNetMean( float2 scale, float3* input, int iWidth, flo
 	const float3 px  = input[ dy * iWidth + dx ];
 	const float3 bgr = make_float3(px.z - mean_value.x, px.y - mean_value.y, px.x - mean_value.z);
 	
-    output[n * 0 + y * oWidth + x] = bgr.x;
-    output[n * 1 + y * oWidth + x] = bgr.y;
-    output[n * 2 + y * oWidth + x] = bgr.z;
+	output[n * 0 + y * oWidth + x] = bgr.x;
+	output[n * 1 + y * oWidth + x] = bgr.y;
+	output[n * 2 + y * oWidth + x] = bgr.z;
 }
 
 // cudaPreImageNetMean
@@ -177,7 +177,7 @@ __global__  void kernelSoftmax( float* x, int channels, float* y)
 
 	extern __shared__ float mem[];
     __shared__ float sum_value;
-
+	sum_value=0;
 	float number = *(x + blockDim.x*blockIdx.x + threadIdx.x);
 	float number_exp = __expf(number);
 

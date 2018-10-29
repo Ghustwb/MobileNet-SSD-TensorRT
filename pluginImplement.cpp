@@ -4,145 +4,6 @@
 #include <algorithm>
 
 /******************************/
-// Softmax Plugin Layer
-/******************************/
-//The code is not publicly available,, and you need to implement it yourself.
-
-/******************************/
-// Concat Plugin Layer
-/******************************/
-/*
-ConcatPlugin::ConcatPlugin(int axis, const void* buffer, size_t size)
-{
-    assert(size == (18*sizeof(int)));
-    const int* d = reinterpret_cast<const int*>(buffer);
-
-    dimsConv4_3 = DimsCHW{d[0], d[1], d[2]};
-    dimsFc7 = DimsCHW{d[3], d[4], d[5]};
-    dimsConv6 = DimsCHW{d[6], d[7], d[8]};
-    dimsConv7 = DimsCHW{d[9], d[10], d[11]};
-    dimsConv8 = DimsCHW{d[12], d[13], d[14]};
-    dimsConv9 = DimsCHW{d[15], d[16], d[17]};
-    _axis = axis;
-}
-
-Dims ConcatPlugin::getOutputDimensions(int index, const Dims* inputs, int nbInputDims)
-{
-    assert(nbInputDims == 6);
-    if(_axis == 1)
-    {
-        top_concat_axis = inputs[0].d[0] + inputs[1].d[0] + inputs[2].d[0] + inputs[3].d[0] + inputs[4].d[0] + inputs[5].d[0];
-        return DimsCHW(top_concat_axis, 1, 1);
-    }
-    else if(_axis == 2)
-    {
-        top_concat_axis = inputs[0].d[1] + inputs[1].d[1] + inputs[2].d[1] + inputs[3].d[1] + inputs[4].d[1] + inputs[5].d[1];
-        return DimsCHW(2, top_concat_axis, 1);
-    }
-    else
-    {//_param.concat_axis == 3
-        return DimsCHW(0, 0, 0);
-    }
-}
-
-int ConcatPlugin::initialize()
-{
-    inputs_size = 6;//6个bottom层
-    if(_axis == 1)//c
-    {
-        top_concat_axis = dimsConv4_3.c() + dimsFc7.c() + dimsConv6.c() + dimsConv7.c() + dimsConv8.c() + dimsConv9.c();
-        bottom_concat_axis[0] = dimsConv4_3.c(); bottom_concat_axis[1] = dimsFc7.c(); bottom_concat_axis[2] = dimsConv6.c();
-        bottom_concat_axis[3] = dimsConv7.c(); bottom_concat_axis[4] = dimsConv8.c(); bottom_concat_axis[5] = dimsConv9.c();
-
-        concat_input_size_[0] = dimsConv4_3.h() * dimsConv4_3.w();  concat_input_size_[1] = dimsFc7.h() * dimsFc7.w();
-        concat_input_size_[2] = dimsConv6.h() * dimsConv6.w();  concat_input_size_[3] = dimsConv7.h() * dimsConv7.w();
-        concat_input_size_[4] = dimsConv8.h() * dimsConv8.w();  concat_input_size_[5] = dimsConv9.h() * dimsConv9.w();
-
-        num_concats_[0] = dimsConv4_3.c(); num_concats_[1] = dimsFc7.c(); num_concats_[2] = dimsConv6.c();
-        num_concats_[3] = dimsConv7.c(); num_concats_[4] = dimsConv8.c(); num_concats_[5] = dimsConv9.c();
-    }
-    else if(_axis == 2)
-    {//h
-        top_concat_axis = dimsConv4_3.h() + dimsFc7.h() + dimsConv6.h() + dimsConv7.h() + dimsConv8.h() + dimsConv9.h();
-        bottom_concat_axis[0] = dimsConv4_3.h(); bottom_concat_axis[1] = dimsFc7.h(); bottom_concat_axis[2] = dimsConv6.h();
-        bottom_concat_axis[3] = dimsConv7.h(); bottom_concat_axis[4] = dimsConv8.h(); bottom_concat_axis[5] = dimsConv9.h();
-
-        concat_input_size_[0] = dimsConv4_3.w(); concat_input_size_[1] = dimsFc7.w(); concat_input_size_[2] = dimsConv6.w();
-        concat_input_size_[3] = dimsConv7.w(); concat_input_size_[4] = dimsConv8.w(); concat_input_size_[5] = dimsConv9.w();
-
-        num_concats_[0] = dimsConv4_3.c() * dimsConv4_3.h();  num_concats_[1] = dimsFc7.c() * dimsFc7.h();
-        num_concats_[2] = dimsConv6.c() * dimsConv6.h();  num_concats_[3] = dimsConv7.c() * dimsConv7.h();
-        num_concats_[4] = dimsConv8.c() * dimsConv8.h();  num_concats_[5] = dimsConv9.c() * dimsConv9.h();
-
-    }
-    else
-    {//_param.concat_axis == 3 , w
-        top_concat_axis = dimsConv4_3.w() + dimsFc7.w() + dimsConv6.w() + dimsConv7.w() + dimsConv8.w() + dimsConv9.w();
-        bottom_concat_axis[0] = dimsConv4_3.w(); bottom_concat_axis[1] = dimsFc7.w(); bottom_concat_axis[2] = dimsConv6.w();
-        bottom_concat_axis[3] = dimsConv7.w(); bottom_concat_axis[4] = dimsConv8.w(); bottom_concat_axis[5] = dimsConv9.w();
-
-        concat_input_size_[0] = 1; concat_input_size_[1] = 1; concat_input_size_[2] = 1;
-        concat_input_size_[3] = 1; concat_input_size_[4] = 1; concat_input_size_[5] = 1;
-        return 0;
-    }
-    return 0;
-}
-
-void ConcatPlugin::terminate()
-{
-    //CUDA_CHECK(cudaFree(scale_data));
-    delete[] bottom_concat_axis;
-    delete[] concat_input_size_;
-    delete[] num_concats_;
-}
-
-
-int ConcatPlugin::enqueue(int batchSize, const void*const *inputs, void** outputs, void*, cudaStream_t stream)
-{
-    float *top_data = reinterpret_cast<float*>(outputs[0]);
-    int offset_concat_axis = 0;
-    const bool kForward = true;
-    for (int i = 0; i < inputs_size; ++i) {
-        const float *bottom_data = reinterpret_cast<const float*>(inputs[i]);
-
-        const int nthreads = num_concats_[i] * concat_input_size_[i];
-        //const int nthreads = bottom_concat_size * num_concats_[i];
-        ConcatLayer(nthreads, bottom_data, kForward, num_concats_[i], concat_input_size_[i], top_concat_axis, bottom_concat_axis[i], offset_concat_axis, top_data, stream);
-
-        offset_concat_axis += bottom_concat_axis[i];
-    }
-
-    return 0;
-}
-
-size_t ConcatPlugin::getSerializationSize()
-{
-    return 18*sizeof(int);
-}
-
-void ConcatPlugin::serialize(void* buffer)
-{
-    int* d = reinterpret_cast<int*>(buffer);
-    d[0] = dimsConv4_3.c(); d[1] = dimsConv4_3.h(); d[2] = dimsConv4_3.w();
-    d[3] = dimsFc7.c(); d[4] = dimsFc7.h(); d[5] = dimsFc7.w();
-    d[6] = dimsConv6.c(); d[7] = dimsConv6.h(); d[8] = dimsConv6.w();
-    d[9] = dimsConv7.c(); d[10] = dimsConv7.h(); d[11] = dimsConv7.w();
-    d[12] = dimsConv8.c(); d[13] = dimsConv8.h(); d[14] = dimsConv8.w();
-    d[15] = dimsConv9.c(); d[16] = dimsConv9.h(); d[17] = dimsConv9.w();
-}
-
-void ConcatPlugin::configure(const Dims*inputs, int nbInputs, const Dims* outputs, int nbOutputs, int)
-{
-    dimsConv4_3 = DimsCHW{inputs[0].d[0], inputs[0].d[1], inputs[0].d[2]};
-    dimsFc7 = DimsCHW{inputs[1].d[0], inputs[1].d[1], inputs[1].d[2]};
-    dimsConv6 = DimsCHW{inputs[2].d[0], inputs[2].d[1], inputs[2].d[2]};
-    dimsConv7 = DimsCHW{inputs[3].d[0], inputs[3].d[1], inputs[3].d[2]};
-    dimsConv8 = DimsCHW{inputs[4].d[0], inputs[4].d[1], inputs[4].d[2]};
-    dimsConv9 = DimsCHW{inputs[5].d[0], inputs[5].d[1], inputs[5].d[2]};
-}
-*/
-
-/******************************/
 // PluginFactory
 /******************************/
 nvinfer1::IPlugin* PluginFactory::createPlugin(const char* layerName, const nvinfer1::Weights* weights, int nbWeights)
@@ -522,18 +383,19 @@ nvinfer1::IPlugin* PluginFactory::createPlugin(const char* layerName, const nvin
         DetectionOutputParameters params;
 
         params.backgroundLabelId = 0;
-        //params.codeType = CodeTypeSSD::CENTER_SIZE;
-        params.codeType = CodeType_t::CENTER_SIZE;
+        params.codeType = CodeTypeSSD::CENTER_SIZE;
         params.keepTopK = 100;
         params.shareLocation = true;
         params.varianceEncodedInTarget = false;
         params.topK = 100;
         params.nmsThreshold = 0.45;
         params.numClasses = 5;
-//        params.inputOrder[0] = 0;
-//        params.inputOrder[1] = 1;
-//        params.inputOrder[2] = 2;
-        params.confidenceThreshold = 0.4;
+        params.inputOrder[0] = 0;
+        params.inputOrder[1] = 1;
+        params.inputOrder[2] = 2;
+        params.confidenceThreshold = 0.6;
+	params.confSigmoid = true;
+	params.isNormalized = true;
 
         mDetection_out = std::unique_ptr<INvPlugin, decltype(nvPluginDeleter)>
                 (createSSDDetectionOutputPlugin(params), nvPluginDeleter);
