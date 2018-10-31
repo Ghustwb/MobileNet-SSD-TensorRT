@@ -1,7 +1,9 @@
 # MobileNet-SSD-TensorRT
-To accelerate mobileNet-ssd with tensorRT
+**To accelerate mobileNet-ssd with tensorRT**
 
-TensorRT-Mobilenet-SSD can run 50fps on jetson tx2
+**TensorRT-Mobilenet-SSD can run 50fps on jetson tx2**
+
+---
 
 **Requierments:**
 
@@ -11,11 +13,17 @@ TensorRT-Mobilenet-SSD can run 50fps on jetson tx2
 
 3.opencv
 
+---
+
 **Run:**
 
+```shell
 cmake .
-
+make
 ./build/bin/mobileNet
+```
+
+---
 
 **Reference:**
 
@@ -27,14 +35,14 @@ I replaced depthwise with group_conv,because group_conv  has been optimized in c
 
 I retrianed mobileNet-SSD,my number of classfication is 5
 
+---
+
 **TODO:**
 
-~~1.serializing model will cost a lot of time, if could save the result of serializing model to disk, it will be more convenient~~
+- [x] To save serialized model 
+- [x] To solve the bug of getting different result with same input
+- [ ] To modify the architecture, decrease the time cost
 
-~~2.I think the cost of inference is not good,I want to change the architecture.If I succeeded,I will push it~~
+**The bug has been fixed**
 
-~~3.I found that same code get different result in gtx1080 and tx2. WHY?????~~
-
-~~4.There is a problem，the code runs on different platforms, get different result.~~
-
-**All the problems mentioned above have been solved**
+![image](testPic/test1.png)
