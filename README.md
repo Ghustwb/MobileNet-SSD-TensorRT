@@ -41,6 +41,7 @@ I retrianed mobileNet-SSD,my number of classfication is 5
 
 - [x] To save serialized model 
 - [x] To solve the bug of getting different result with same input
+- [ ] The bottleneck of time cost lies in the decoding of pictures. "imread" cost too much ,to resolve it.
 - [ ] To modify the architecture, decrease the time cost
 
 **The bug has been fixed**
