@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
         float ymin = output[7*k + 4];
         float xmax = output[7*k + 5];
         float ymax = output[7*k + 6];
-        std::cout << xmin << " , " << ymin<< " , " << xmax<< " , " << ymax << std::endl;
+        std::cout << classIndex << " , " << confidence << " , "  << xmin << " , " << ymin<< " , " << xmax<< " , " << ymax << std::endl;
         int x1 = static_cast<int>(xmin * srcImg.cols);
         int y1 = static_cast<int>(ymin * srcImg.rows);
         int x2 = static_cast<int>(xmax * srcImg.cols);

@@ -394,7 +394,7 @@ nvinfer1::IPlugin* PluginFactory::createPlugin(const char* layerName, const nvin
         params.inputOrder[1] = 1;
         params.inputOrder[2] = 2;
         params.confidenceThreshold = 0.4;
-        params.confSigmoid = true;
+        params.confSigmoid = false;
         params.isNormalized = true;
 
         mDetection_out = std::unique_ptr<INvPlugin, decltype(nvPluginDeleter)>
