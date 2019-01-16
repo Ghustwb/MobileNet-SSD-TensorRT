@@ -42,7 +42,15 @@ I retrianed mobileNet-SSD,my number of classfication is 5
 - [x] To save serialized model 
 - [x] To solve the bug of getting different result with same input
 - [ ] The bottleneck of time cost lies in the decoding of pictures. "imread" cost too much ,to resolve it.
-- [ ] To modify the architecture, decrease the time cost
+- [x] To modify the architecture, decrease the time cost
+
+
+
+*If want to decrease the time cost of "imread",you could rebuild OpenCV[https://github.com/jetsonhacks/buildOpenCVTX2]*
+
+*Added producer-consumer*
+
+
 
 **The bug has been fixed**
 
