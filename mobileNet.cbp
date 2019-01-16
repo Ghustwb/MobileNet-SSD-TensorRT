@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="mobileNet" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\local\;CMake Files\..\..\..\usr\local\share\;CMake Files\..\..\..\usr\local\share\OpenCV\;CMake Files\util\;CMake Files\util\cuda\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 install" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="list_install_components">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 list_install_components" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="inferLib">
+         <Option output="/home/lcg/MobileNet-SSD-TensorRT/build/lib/libinferLib.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/build/include/util" />
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/util" />
+            <Add directory="/home/lcg/Work/TensorRT-4.0.1.6/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 inferLib" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="inferLib/fast">
+         <Option output="/home/lcg/MobileNet-SSD-TensorRT/build/lib/libinferLib.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/build/include/util" />
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/util" />
+            <Add directory="/home/lcg/Work/TensorRT-4.0.1.6/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 inferLib/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="mobileNet">
+         <Option output="/home/lcg/MobileNet-SSD-TensorRT/build/bin/mobileNet" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT/build/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/build/include/util" />
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/util" />
+            <Add directory="/home/lcg/Work/TensorRT-4.0.1.6/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 mobileNet" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="mobileNet/fast">
+         <Option output="/home/lcg/MobileNet-SSD-TensorRT/build/bin/mobileNet" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT/build/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/build/include/util" />
+            <Add directory="/home/lcg/MobileNet-SSD-TensorRT/util" />
+            <Add directory="/home/lcg/Work/TensorRT-4.0.1.6/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/cuda/include" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 mobileNet/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/local">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 install/local" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/strip">
+         <Option working_dir="/home/lcg/MobileNet-SSD-TensorRT" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 install/strip" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lcg/MobileNet-SSD-TensorRT/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/common.cpp">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/common.h">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/kernel.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/main.cpp">
+         <Option target="inferLib"/>
+         <Option target="mobileNet"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/mathFunctions.cpp">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/mathFunctions.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/mathFunctions.h">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/pluginImplement.cpp">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/pluginImplement.h">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/tensorNet.cpp">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/tensorNet.h">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaNormalize.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaOverlay.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaRGB.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaResize.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaYUV-NV12.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaYUV-YUYV.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaYUV-YV12.cu">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/loadImage.cpp">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/loadImage.h">
+         <Option target="inferLib"/>
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/loadImage.h">
+          <Option virtualFolder="CMake Files\util\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaUtility.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaResize.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaOverlay.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaYUV.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaNormalize.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaRGB.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+      <Unit filename="/home/lcg/MobileNet-SSD-TensorRT/util/cuda/cudaMappedMemory.h">
+          <Option virtualFolder="CMake Files\util\cuda\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

@@ -51,15 +51,22 @@ file(GLOB includes util/*.h util/cuda/*.h)
 include_directories(${PROJECT_INCLUDE_DIR}/util)
 include_directories(${PROJECT_BINARY_DIR}/util)
 include_directories(${OpenCV_INCLUDE_DIRS})
-
+##
+include_directories(/home/lcg/Work/TensorRT-4.0.1.6/include)
 
 link_directories(${OpenCV_LIBRARY_DIRS})
 
 cuda_add_library(inferLib SHARED ${sources})
-target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvcaffe_parser.so)
-target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvinfer.so)
-target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so)
-target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvparsers.so)
+##
+#target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvcaffe_parser.so)
+#target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvinfer.so)
+#target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so)
+#target_link_libraries(inferLib /usr/lib/aarch64-linux-gnu/libnvparsers.so)
+
+target_link_libraries(inferLib /home/lcg/Work/TensorRT-4.0.1.6/lib/libnvcaffe_parser.so)
+target_link_libraries(inferLib /home/lcg/Work/TensorRT-4.0.1.6/lib/libnvinfer.so)
+target_link_libraries(inferLib /home/lcg/Work/TensorRT-4.0.1.6/lib/libnvinfer_plugin.so)
+target_link_libraries(inferLib /home/lcg/Work/TensorRT-4.0.1.6/lib/libnvparsers.so)
 
 # transfer all headers to the include directory
 foreach(include ${includes})

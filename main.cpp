@@ -4,7 +4,9 @@
 #include "pluginImplement.h"
 #include "tensorNet.h"
 #include "loadImage.h"
+#include "imageBuffer.h"
 #include <chrono>
+#include <thread>
 
 
 const char* model  = "../../model/MobileNetSSD_deploy_iplugin.prototxt";
@@ -15,6 +17,9 @@ const char* INPUT_BLOB_NAME = "data";
 const char* OUTPUT_BLOB_NAME = "detection_out";
 static const uint32_t BATCH_SIZE = 1;
 
+//image buffer size = 10
+//dropFrame = false
+ConsumerProducerQueue<cv::Mat> *imageBuffer = new ConsumerProducerQueue<cv::Mat>(10,false);
 
 class Timer {
 public:
@@ -82,6 +87,18 @@ void loadImg( cv::Mat &input, int re_width, int re_height, float *data_unifrom,c
     }
 }
 
+//thread read video
+void readPicture()
+{
+    cv::VideoCapture cap("../../testVideo/test.avi");
+    cv::Mat image;
+    while(cap.isOpened())
+    {
+        cap >> image;
+        imageBuffer->add(image);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     std::vector<std::string> output_vector = {OUTPUT_BLOB_NAME};
@@ -104,9 +121,13 @@ int main(int argc, char *argv[])
     void* imgCUDA;
     Timer timer;
 
-    std::string imgFile = "../../testPic/test.jpg";
+//    std::string imgFile = "../../testPic/test.jpg";
+//    frame = cv::imread(imgFile);
+    std::thread readTread(readPicture);
+    readTread.detach();
+    while(1){
+    imageBuffer->consume(frame);
 
-    frame = cv::imread(imgFile);
     srcImg = frame.clone();
     cv::resize(frame, frame, cv::Size(300,300));
     const size_t size = width * height * sizeof(float3);
@@ -151,8 +172,9 @@ int main(int argc, char *argv[])
 
     }
     cv::imshow("mobileNet",srcImg);
-    cv::waitKey(0);
+    cv::waitKey(40);
     free(imgData);
+    }
     cudaFree(imgCUDA);
     cudaFreeHost(imgCPU);
     cudaFree(output);
