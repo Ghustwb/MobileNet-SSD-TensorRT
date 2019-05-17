@@ -174,6 +174,7 @@ int main(int argc, char *argv[])
     cv::imshow("mobileNet",srcImg);
     cv::waitKey(40);
     free(imgData);
+    cudaFree(imgCUDA);
     }
     cudaFree(imgCUDA);
     cudaFreeHost(imgCPU);
